@@ -22,7 +22,12 @@ namespace WeatherForecast.Controllers
         {
             _logger = logger;
         }
-
+        [HttpGet]
+        [Route("/")]
+        public ActionResult RedirectToSwagger()
+        {
+            return Redirect("swagger");
+        }
         [HttpGet]
         public IEnumerable<WeatherForecast> Get()
         {
@@ -34,6 +39,13 @@ namespace WeatherForecast.Controllers
                 Summary = Summaries[rng.Next(Summaries.Length)]
             })
             .ToArray();
+        }
+
+        [HttpGet]
+        [Route("/hello")]
+        public string Hello()
+        {
+            return "hello world";
         }
     }
 }
